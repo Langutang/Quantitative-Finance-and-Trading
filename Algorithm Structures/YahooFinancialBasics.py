@@ -54,3 +54,16 @@ temp.set_index("formatted_date",inplace=True)
 temp2 = temp[~temp.index.duplicated(keep='first')]
 close_prices[cp_tickers[i]] = temp2["adjclose"]
 drop.append(cp_tickers[i])
+
+###############################################################################
+######################## DATA FAMILIARIZATION #################################
+###############################################################################
+
+close_prices.mean(axis=0)
+close_prices.median(axis=0)
+close_prices.std(axis=0)
+
+# We need daily returns - how much a stock yielded daily over time period
+daily_return = close_prices.pct_change()
+daily_return.mean(axis=0)
+daily_return.std(axis=0)
