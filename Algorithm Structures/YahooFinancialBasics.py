@@ -67,3 +67,25 @@ close_prices.std(axis=0)
 daily_return = close_prices.pct_change()
 daily_return.mean(axis=0)
 daily_return.std(axis=0)
+
+###############################################################################
+######################## ROLLING MEAN AND STD #################################
+###############################################################################
+
+# How does a mean and std move over a given time period
+daily_return.rolling(window=20, min_periods=1).mean()
+daily_return.rolling(window=20).std()
+#Exponential moving average
+daily_return.ewm(span=20, min_periods=20).mean() #simple exponeital MA
+daily_return.ewm(span=20, min_periods=20).std()
+
+# Visualization
+close_prices.plot()
+cp_standardized = (close_prices - close_prices.mean())/close_prices.std()
+cp_standardized.plot()
+
+close_prices.plot(subplots = True, layout = (3,2))
+# We need daily returns - how much a stock yielded daily over time period
+daily_return = close_prices.pct_change()
+daily_return.mean(axis=0)
+daily_return.std(axis=0)
