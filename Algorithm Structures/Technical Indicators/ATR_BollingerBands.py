@@ -54,3 +54,5 @@ def BollBands(DF,n):
     return df
 
 BollBands(ohlcv, 2)
+
+BollBands(ohlcv, 20).iloc[-100:,[-4,-3,-2]].plot()
